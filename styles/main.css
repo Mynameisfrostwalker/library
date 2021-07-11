@@ -105,6 +105,7 @@ div#form {
     box-shadow: 10px 10px 8px 0px #000000;
     padding: 2rem;
     font-size: 2rem;
+    display: none;
 }
 
 input {
@@ -142,4 +143,28 @@ input {
 #submit:hover {
     box-shadow: 0px 0px 5px 5px orange inset;
     cursor: pointer;
+}
+
+.redbutton {
+    box-shadow: 0px 0px 10px 10px red inset;
+    cursor: pointer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.Completebutton {
+    box-shadow: 0px 0px 10px 10px greenyellow inset;
+    cursor: pointer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.Incompletebutton {
+    box-shadow: 0px 0px 10px 10px grey inset;
+    cursor: pointer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 10px;
 }
