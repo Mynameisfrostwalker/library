@@ -19,26 +19,6 @@
         <div class="addbook">
             <img src="images/icons8-plus-100.png" alt="ADD BOOK" />
         </div>
-        <div class="book">
-            <div class="main-info">
-                <p>Book Title</p>
-                <p>Author</p>
-            </div>
-            <div class="status-info">
-                <p class="redbutton">Remove?</p>
-                <p class="Completebutton">Completed</p>
-            </div>
-        </div>
-        <div class="book">
-            <div class="main-info">
-                <p>Book Title</p>
-                <p>Author</p>
-            </div>
-            <div class="status-info">
-                <p class="redbutton">Remove?</p>
-                <p class="Incompletebutton">Incomplete</p>
-            </div>
-        </div>
         <div id="form">
             <form>
                 <label for="Title">Title:</label>
@@ -50,11 +30,11 @@
                 <fieldset>
                     <legend>Have you completed this book?</legend>
                     <label for="complete">Yes</label>
-                    <input type="radio" id="completed" value="complete" name="status" style="display: inline">
+                    <input type="radio" id="completed" value="has been completed" name="status" style="display: inline">
                     <label for="incomplete">No</label>
-                    <input type="radio" id="incomplete" value="incomplete" name="status" style="display: inline">
+                    <input type="radio" id="incomplete" value="has not been completed" name="status" style="display: inline">
                 </fieldset>
-                <button type="button" value="submit" id="submit" refresh="false">Submit</button>
+                <input type="submit" value="submit" id="submit">
             </form>
         </div>
     </main>
