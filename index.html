@@ -42,11 +42,11 @@
         <div id="form">
             <form>
                 <label for="Title">Title:</label>
-                <input type="text" id="Title" required>
+                <input type="text" id="Title" name="title" required>
                 <label for="Author">Author:</label>
-                <input type="text" id="Author" required>
+                <input type="text" id="Author" name="author" required>
                 <label for="Pages">Number of Pages:</label>
-                <input type="number" id="Pages" min="1" required>
+                <input type="number" id="Pages" name="pages" min="1" required>
                 <fieldset>
                     <legend>Have you completed this book?</legend>
                     <label for="complete">Yes</label>
@@ -54,7 +54,7 @@
                     <label for="incomplete">No</label>
                     <input type="radio" id="incomplete" value="incomplete" name="status" style="display: inline">
                 </fieldset>
-                <input type="submit" value="submit" id="submit">
+                <button type="button" value="submit" id="submit" refresh="false">Submit</button>
             </form>
         </div>
     </main>
