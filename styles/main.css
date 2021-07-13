@@ -5,7 +5,7 @@ html {
 
 body {
     display: grid;
-    grid-template-rows: 1fr 4.5fr auto;
+    grid-template-rows: auto 4.5fr auto;
     grid-template-areas: "header" "main" "footer";
     position: relative;
 }
@@ -105,6 +105,7 @@ div#form {
     box-shadow: 10px 10px 8px 0px #000000;
     padding: 2rem;
     font-size: 2rem;
+    display: none;
 }
 
 input {
@@ -166,4 +167,8 @@ input {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-radius: 10px;
+}
+
+.visible {
+    display: block !important;
 }

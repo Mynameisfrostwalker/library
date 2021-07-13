@@ -1,4 +1,4 @@
-let myLibrary = [];
+let myLibrary = [...JSON.parse(localStorage.getItem('library'))];
 let title;
 let author;
 let length;
@@ -6,6 +6,7 @@ let checked;
 const main = document.querySelector('main');
 const form = document.querySelector('form')
 const formcontainer = document.querySelector('div#form')
+const addBook = document.querySelector('div.addbook')
 
 function Book(name, creator, pages, status) {
     this.title = name;
@@ -18,8 +19,15 @@ function Book(name, creator, pages, status) {
     }
 }
 
+function columnSetter() {
+    for (let j = 0; j <= main.children.length; j++) {
+        if (main.children.length > (4 * j)) {
+            main.style['grid-template-rows'] = `repeat(${j + 2}, 1fr)`
+        }
+    }
+}
+
 function createCard() {
-    console.log(myLibrary)
     for (let i = 0; i < myLibrary.length; i++) {
         const book = document.createElement('div');
         book.classList.add('book');
@@ -39,7 +47,7 @@ function createCard() {
         para3.textContent = `Remove?`;
         statusInfo.appendChild(para3);
         const para4 = document.createElement('p');
-        if (myLibrary[i].bookstatus === 'complete') {
+        if (myLibrary[i].bookstatus === 'has been completed') {
             para4.classList.add('Completebutton');
             para4.textContent = `Completed`
         } else {
@@ -48,17 +56,17 @@ function createCard() {
         }
         statusInfo.appendChild(para4);
         book.appendChild(statusInfo);
+        book.setAttribute('data-key', `${i}`)
         main.insertBefore(book, formcontainer);
-        console.log(main)
+        columnSetter()
     }
 }
 
 function addBookToLibrary() {
     myLibrary.push(new Book(title, author, length, checked));
-    createCard();
 }
 
-function input(event) {
+function input() {
     title = form.elements['title'].value;
     author = form.elements['author'].value;
     length = form.elements["pages"].value;
@@ -68,8 +76,44 @@ function input(event) {
         }
     })
     addBookToLibrary()
-    form.style.display = 'none';
-    return false;
+    localStorage.setItem('library', JSON.stringify(myLibrary))
 }
 
 form.addEventListener('submit', input)
+
+addBook.onclick = function() {
+    formcontainer.classList.add('visible')
+}
+
+createCard()
+
+function removePrevCards() {
+    let realLength = main.children.length
+    for (let k = 0; k < realLength; k++) {
+        console.log(k)
+        if (main.children[1].classList.value === 'book') {
+            console.log(k)
+            main.children[1].remove()
+        }
+    }
+}
+
+function remove(event) {
+    let index = parseInt(event.target.parentNode.parentNode.attributes['data-key'].value);
+    let got = JSON.parse(localStorage.getItem('library'))
+    let newlib = [...got.slice(0, index), ...got.slice(index + 1)]
+    localStorage.setItem('library', JSON.stringify(newlib))
+
+    myLibrary = [...myLibrary.slice(0, index), ...myLibrary.slice(index + 1)]
+    console.log(myLibrary)
+    console.log(localStorage.getItem('library'))
+    removePrevCards()
+    createCard()
+    document.querySelectorAll('.redbutton').forEach(button => {
+        button.addEventListener('click', remove)
+    })
+}
+
+document.querySelectorAll('.redbutton').forEach(button => {
+    button.addEventListener('click', remove)
+})
