@@ -10,6 +10,26 @@ body {
     position: relative;
 }
 
+@media screen and (max-width: 500px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+    }
+    .addbook,
+    .book {
+        width: 10rem;
+        height: 10rem;
+        font-size: 0.5rem !important;
+    }
+    main {
+        grid-template-columns: 1fr 1fr !important;
+        grid-gap: 2rem !important;
+    }
+    footer {
+        margin-top: -0.5rem;
+    }
+}
+
 header {
     background-color: #41423d;
     color: aliceblue;
@@ -35,7 +55,9 @@ main {
 
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     grid-area: footer;
     background: grey;
     margin-left: -0.5rem;
