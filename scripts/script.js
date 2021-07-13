@@ -60,6 +60,16 @@ function createCard() {
         main.insertBefore(book, formcontainer);
         columnSetter()
     }
+    document.querySelectorAll('.redbutton').forEach(button => {
+        button.addEventListener('click', remove)
+    })
+    document.querySelectorAll('.Incompletebutton').forEach(button => {
+        button.addEventListener('click', change)
+    })
+    document.querySelectorAll('.Completebutton').forEach(button => {
+        button.addEventListener('click', change)
+    })
+
 }
 
 function addBookToLibrary() {
@@ -109,11 +119,37 @@ function remove(event) {
     console.log(localStorage.getItem('library'))
     removePrevCards()
     createCard()
-    document.querySelectorAll('.redbutton').forEach(button => {
-        button.addEventListener('click', remove)
-    })
 }
 
 document.querySelectorAll('.redbutton').forEach(button => {
     button.addEventListener('click', remove)
+})
+
+function change(event) {
+    let index = parseInt(event.target.parentNode.parentNode.attributes['data-key'].value)
+    if (event.target.classList.value === 'Completebutton') {
+        let got = JSON.parse(localStorage.getItem('library'))
+        got[index].bookstatus = 'has not been completed'
+        localStorage.setItem('library', JSON.stringify(got))
+
+        myLibrary[index].bookstatus = 'has not been completed'
+        removePrevCards()
+        createCard()
+    } else {
+        let got = JSON.parse(localStorage.getItem('library'))
+        got[index].bookstatus = 'has been completed'
+        localStorage.setItem('library', JSON.stringify(got))
+
+        myLibrary[index].bookstatus = 'has been completed'
+        removePrevCards()
+        createCard()
+    }
+}
+
+document.querySelectorAll('.Completebutton').forEach(button => {
+    button.addEventListener('click', change)
+})
+
+document.querySelectorAll('.Incompletebutton').forEach(button => {
+    button.addEventListener('click', change)
 })
