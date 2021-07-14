@@ -1,3 +1,7 @@
+if (JSON.parse(localStorage.getItem('library')) === null) {
+    localStorage.setItem('library', '[]')
+}
+
 let myLibrary = [...JSON.parse(localStorage.getItem('library'))];
 let title;
 let author;
