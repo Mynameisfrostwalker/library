@@ -12,12 +12,25 @@ const form = document.querySelector('form')
 const formcontainer = document.querySelector('div#form')
 const addBook = document.querySelector('div.addbook')
 
-function Book(name, creator, pages, status) {
+/*function Book(name, creator, pages, status) {
     this.title = name;
     this.author = creator;
     this.bookLength = pages;
     this.bookstatus = status;
     this.info = function() {
+        return `${this.title} was authored by ${this.author}. 
+        ${this.title} is ${this.bookLength} pages long and has ${this.readStatus}`
+    }
+}
+*/
+class Book {
+    constructor(name, creator, pages, status) {
+        this.title = name;
+        this.author = creator;
+        this.bookLength = pages;
+        this.bookstatus = status;
+    }
+    info() {
         return `${this.title} was authored by ${this.author}. 
         ${this.title} is ${this.bookLength} pages long and has ${this.readStatus}`
     }
